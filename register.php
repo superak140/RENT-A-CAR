@@ -8,17 +8,17 @@ include("DBConnection.php"); // include the connection object from the DBConnect
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
-$fname = mysqli_real_escape_string($db,$_POST['fname']);
-$username = mysqli_real_escape_string($db,$_POST['username']);
-$password = mysqli_real_escape_string($db,$_POST['password']);
-$phone = mysqli_real_escape_string($db,$_POST['phone']);
-$email = mysqli_real_escape_string($db,$_POST['email']);
+$fname = mysqli_real_escape_string($conn,$_POST['fname']);
+$username = mysqli_real_escape_string($conn,$_POST['username']);
+$password = mysqli_real_escape_string($conn,$_POST['password']);
+$phone = mysqli_real_escape_string($conn,$_POST['phone']);
+$email = mysqli_real_escape_string($conn,$_POST['email']);
 
 $sql = "INSERT INTO users (fname,username,password,phone,email) VALUES ('$fname', '$username', '$password','$phone','$email')";
-if(mysqli_query($db, $sql)){
-  echo "Account Created successfully. <a href='login-register.php'>Click here to go back to login page</a>";
+if(mysqli_query($conn, $sql)){
+  echo "Account Created successfully. <a href='login-register.html'>Click here to go back to login page</a>";
 } else{
-  echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
 }
  ?>
